@@ -1,55 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>phone_book</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
     <h1>My Own Phone Book</h1>
 
-    <form action="">
+    <form>
         <label for="name-enter"></label>
         <input id="name-enter" type="text" placeholder="Enter a name">
         <input class="button1" type="button" value="Search">
-        <input class="button1" type="reset" value="Reset">
+        <input class="button1" type="button" value="Reset">
         
     </form>
 
-    <table>
+    <table id="phonebook">
         <thead>
             <tr>
-                <td>Name</td>
-                <td>Phone</td>
-                <td>Email</td>
-                <td>Action</td>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Action</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="phoneBookBody">
             
         </tbody>
         
     </table>
 
-    <form id="AddContact" action="" novalidate name="add">
-        <!-- <div> -->
-            <label for="name">Name<input id="name" type="text"></label>
-            
-        <!-- </div> -->
-        <!-- <div> -->
-            <label for="phone">Phone<input id="phone" type="text"></label>
-            
-        <!-- </div> -->
-        <!-- <div> -->
-            <label for="email">Email<input id="email" type="text"></label>
-            
-        <!-- </div> -->
-        
-        <input class="button2" type="button" value="Add contact">
-
+    <form id="add-contact" novalidate>
+        <label for="name">Name<input id="name" name="name" type="text"></label>
+        <label for="phone">Phone<input id="phone" name="phone" type="text"></label>
+        <label for="email">Email<input id="email" name="email" type="text"></label>
+        <input id="addBtn" type="button" value="Add contact">
     </form>
 
 
