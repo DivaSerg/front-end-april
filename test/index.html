@@ -5,20 +5,27 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <style>
+    body * {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid black;
+    }
+    </style>
 </head>
 
 <body>
-    <div class="area">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-lg-3">
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor totam, vitae delectus minus molestiae, alias ut officiis maiores beatae sunt! Consectetur delectus aliquid, suscipit unde culpa iusto quaerat repellendus alias.</span>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-lg-4">
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor totam, vitae delectus minus molestiae, alias ut officiis maiores beatae sunt! Consectetur delectus aliquid, suscipit unde culpa iusto quaerat repellendus alias.</span></div>
-            <div class="col-xs-6 col-sm-2 col-lg-5">
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor totam, vitae delectus minus molestiae, alias ut officiis maiores beatae sunt! Consectetur delectus aliquid, suscipit unde culpa iusto quaerat repellendus alias.</span></div>
-        </div>
-    </div>
+    <button id="button-to-hide">Нажми меня и текст удалиться</button>
+    <p id="text-remove">Текст который должен удалить!</p>
+    <hr>
+    <hr>
+    <button onclick="this.style.display = 'none'">Нажми меня и я должна удалиться</button>
+    <script>
+    document.getElementById('button-to-hide').onclick = function(event) {
+        console.log(event)
+            // document.getElementById('text-remove').style.display = 'none';
+    }
+    </script>
 </body>
 
 </html>
