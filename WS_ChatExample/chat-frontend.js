@@ -26,7 +26,7 @@
     }
 
     // open connection
-    var connection = new WebSocket('ws://127.0.0.1:1337');
+    var connection = new WebSocket('ws://192.168.1.74:1337');
 
     connection.onopen = function () {
         // first we want users to enter their names
@@ -102,7 +102,7 @@
 
     var
      debounceIndex,
-     debounceDelay = 5000;
+     debounceDelay = 500;
     input.keydown(function(e) {
         if (e.keyCode === 13) {
             var msg = $(this).val();

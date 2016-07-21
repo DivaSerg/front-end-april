@@ -137,7 +137,9 @@ wsServer.on('request', function(request) {
     });
 
     // user disconnected
-    connection.on('close', function(error) {
+    connection.on('close', function(closeCode) {
+		console.log('Status code:', closeCode);
+		
         if (userName !== false && userColor !== false) {
             console.log((new Date()) + " Peer "
                 + userName + " disconnected.");
