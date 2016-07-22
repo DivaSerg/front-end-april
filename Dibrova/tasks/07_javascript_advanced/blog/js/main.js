@@ -61,7 +61,6 @@
     <li>Skype: byme</li>
     </ul>  
         `;
-
         return template;
     }
 
@@ -77,7 +76,6 @@
     </form>
 </div>
         `;
-
         return template;
     }
 

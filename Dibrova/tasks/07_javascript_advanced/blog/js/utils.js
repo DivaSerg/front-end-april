@@ -1,12 +1,11 @@
-(function (window) {
+(function(window) {
 
     var DEFAULT_URL = "http://localhost:3050/api/v1";
     var DAY_OF_WEEK = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-    function Utils() {
-    }
+    function Utils() {}
 
-    Utils.prototype.sendRequest = function (params, callback) {
+    Utils.prototype.sendRequest = function(params, callback) {
         var request = new XMLHttpRequest();
         var data, error, body;
 
@@ -21,8 +20,8 @@
 
         }
 
-        request.onload = function () {
-            if (request.status == 200 || request.status == 304  || request.status == 201) {
+        request.onload = function() {
+            if (request.status == 200 || request.status == 304 || request.status == 201) {
                 data = JSON.parse(request.responseText);
                 callback(null, data);
             } else {
@@ -31,7 +30,7 @@
             }
         };
 
-        request.onerror = function (data) {
+        request.onerror = function(data) {
             callback(data, null)
         };
 
@@ -39,17 +38,17 @@
     };
 
 
-    Utils.prototype.isLoading = function (isLoad, element) {
+    Utils.prototype.isLoading = function(isLoad, element) {
         var spinner = document.getElementById(element);
         spinner.style.display = isLoad ? 'block' : 'none';
     };
 
-    Utils.prototype.formatDate = function (rawDate) {
+    Utils.prototype.formatDate = function(rawDate) {
         var date = new Date(rawDate);
         return DAY_OF_WEEK[date.getDay()] + ' ' + date.getDate() + ' ' + date.getFullYear() + ' at ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
     };
 
-    Utils.prototype.formatArticleText = function (text) {
+    Utils.prototype.formatArticleText = function(text) {
         if (text.length > 200) {
             return text.substring(0, 200) + "..."
         }

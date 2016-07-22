@@ -46,7 +46,7 @@
       "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.  Accusamus,quidem vel tempore harum non laboriosam,ex possimus voluptatibusquae exercitationem illum dolores eos doloremque soluta aut!Consequatur minima,totam maxime.",
       "author": "By Me!",
       "photo": "https://randomuser.me/api/portraits/men/15.jpg",
-      "likes": 10,
+      "likes": 11,
       "comments": [
         {
           "id": 1,
@@ -68,7 +68,7 @@
       "createdAt": "2016-07-16T09:45:02.446Z",
       "editedAt": "2016-07-16T09:45:02.446Z",
       "comments": [],
-      "likes": 0,
+      "likes": 2,
       "id": 3
     },
     {
@@ -79,8 +79,30 @@
       "createdAt": "2016-07-16T09:45:32.093Z",
       "editedAt": "2016-07-16T09:45:32.093Z",
       "comments": [],
-      "likes": 0,
+      "likes": 1,
       "id": 4
+    },
+    {
+      "title": "aaaa",
+      "text": "sddfgfhfgjfjghj",
+      "author": "asd",
+      "photo": "xx",
+      "createdAt": "2016-07-16T15:29:18.660Z",
+      "editedAt": "2016-07-16T15:29:18.660Z",
+      "comments": [],
+      "likes": 0,
+      "id": 5
+    },
+    {
+      "title": "",
+      "text": "",
+      "author": "",
+      "photo": "",
+      "createdAt": "2016-07-16T18:52:05.461Z",
+      "editedAt": "2016-07-16T18:52:05.461Z",
+      "comments": [],
+      "likes": 0,
+      "id": 6
     }
   ]
 }
