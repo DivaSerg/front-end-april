@@ -24,6 +24,8 @@ var history = [ ];
 var clients = [ ];
 
 var typing = {};
+var aliveUsers = {};
+var forPrivate = {};
 
 /**
  * Helper function for escaping input strings
@@ -74,9 +76,11 @@ wsServer.on('request', function(request) {
 	
     clients.push(connection) - 1;
 	
-    var typingKey = (Math.round(Math.random() * 1000000)).toString(36);
+    var typingKey = (Math.round(Math.random() * 100000000)).toString(36);
     var userName = false;
     var userColor = false;
+
+    forPrivate[typingKey] = connection;
 
     console.log((new Date()) + ' Connection accepted.');
 
@@ -91,26 +95,44 @@ wsServer.on('request', function(request) {
             if (userName === false) { // first message sent by user is their name
                 // remember user name
                 userName = htmlEntities(message.utf8Data);
+                aliveUsers[typingKey] = userName;
                 // get random color and send it back to the user
                 userColor = getRandomColor();
                 connection.sendUTF(JSON.stringify({ type:'color', data: userColor }));
                 console.log((new Date()) + ' User is known as: ' + userName
                             + ' with ' + userColor + ' color.');
+                sendAll('alive', aliveUsers);
 
             } else { // log and broadcast the message
                 console.log((new Date()) + ' Received Message from '
                             + userName + ': ' + message.utf8Data);
-                var json;
 
                 if (htmlEntities(message.utf8Data) == '{{is typing}}') {
                     if (!typing[typingKey]) {
                         typing[typingKey] = userName;
-                        json = JSON.stringify({ type:'typing', data: typing });
+                        sendAll('typing', typing);
                     }
                     
                 } else if (htmlEntities(message.utf8Data) == '{{end typing}}') {
                     delete typing[typingKey];
-                    json = JSON.stringify({ type:'typing', data: typing });
+                    sendAll('typing', typing);
+                } else if (/\{\{private.+\}\}/.test(htmlEntities(message.utf8Data))) {
+                    var parsedMsg = htmlEntities(message.utf8Data).match(/\{\{private=(.+)\}\}(.+)/);
+                    console.log(parsedMsg);
+                    var userKey = (parsedMsg && parsedMsg[1]) || '';
+                    var message = (parsedMsg && parsedMsg[2]) || '';
+
+                    var obj = {
+                        time: (new Date()).getTime(),
+                        text: 'To ' + aliveUsers[userKey] + ' ' + htmlEntities(message),
+                        author: userName,
+                        color: 'red'
+                    };
+                    connection.sendUTF(JSON.stringify({ type:'message', data: obj }));
+
+                    obj.text = htmlEntities(message);
+                    forPrivate[userKey] && forPrivate[userKey].sendUTF(JSON.stringify({ type:'message', data: obj }));
+
                 } else {
                     // we want to keep history of all sent messages
                     var obj = {
@@ -123,18 +145,22 @@ wsServer.on('request', function(request) {
                     history = history.slice(-100);
                        
                     // broadcast message to all connected clients
-                    json = JSON.stringify({ type:'message', data: obj });
+                    sendAll('message', obj);
 
-                }
-
-                if (!json) return;
-                
-                for (var i=0; i < clients.length; i++) {
-                    clients[i].sendUTF(json);
                 }
             }
         }
     });
+
+    function sendAll(type, obj) {
+        if (!type && !obj) return;
+
+        var json = JSON.stringify({ type: type, data: obj });
+
+        for (var i=0; i < clients.length; i++) {
+            clients[i].sendUTF(json);
+        }
+    }
 
     // user disconnected
     connection.on('close', function(closeCode) {
@@ -146,12 +172,13 @@ wsServer.on('request', function(request) {
             // remove user from the list of connected clients
 			var index = clients.indexOf(connection);
             clients.splice(index, 1);
+			//connection.close();
             delete typing[typingKey];
+            delete aliveUsers[typingKey];
+            delete forPrivate[typingKey];
 			
-			var json = JSON.stringify({ type:'typing', data: typing });
-			for (var i=0; i < clients.length; i++) {
-				clients[i].sendUTF(json);
-			}
+            sendAll('typing', typing);
+            sendAll('alive', aliveUsers);
         }
     });
 

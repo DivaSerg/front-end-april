@@ -6,12 +6,17 @@
     var input = $('#input');
     var status = $('#status');
     var typing = $('#typing');
+    var $logInOut = $('.log-in-out');
+    var $isAlive = $('#is-alive');
 
 
     // my color assigned by the server
     var myColor = false;
     // my name sent to the server
     var myName = false;
+
+    var toPersonKey = false;
+    var allAlive = [];
 
     // if user is running mozilla then use it's built-in WebSocket
     window.WebSocket = window.WebSocket || window.MozWebSocket;
@@ -28,73 +33,82 @@
     // open connection
     var connection = new WebSocket('ws://192.168.1.74:1337');
 
-    connection.onopen = function () {
-        // first we want users to enter their names
-        var userData = localStorage.getItem('userData');
-        userData = userData && JSON.parse(userData);
+    function addLiseners() {
+        connection.onopen = function () {
+            // first we want users to enter their names
+            var userData = localStorage.getItem('userData');
+            userData = userData && JSON.parse(userData);
 
-        input.removeAttr('disabled');
+            input.removeAttr('disabled');
 
-        if (userData) {
-            myName = userData.name;
-            connection.send(myName);
-        } else {
-            status.text('Choose name:');
-        }
-        
-    };
-
-    connection.onerror = function (error) {
-        // just in there were some problems with conenction...
-        content.html($('<p>', { text: 'Sorry, but there\'s some problem with your '
-                                    + 'connection or the server is down.' } ));
-    };
-
-    // most important part - incoming messages
-    connection.onmessage = function (message) {
-        // try to parse JSON message. Because we know that the server always returns
-        // JSON this should work without any problem but we should make sure that
-        // the massage is not chunked or otherwise damaged.
-        try {
-            var json = JSON.parse(message.data);
-        } catch (e) {
-            console.log('This doesn\'t look like a valid JSON: ', message.data);
-            return;
-        }
-
-        // NOTE: if you're not sure about the JSON structure
-        // check the server source code above
-        if (json.type === 'color') { // first response from the server with user's color
-            myColor = json.data;
-            status.text(myName + ': ').css('color', myColor);
-            var userData = {name: myName};
-
-            localStorage.setItem('userData', JSON.stringify(userData));
-            input.removeAttr('disabled').focus();
-            // from now user can start sending messages
-        } else if (json.type === 'history') { // entire message history
-            // insert every single message to the chat window
-            for (var i=0; i < json.data.length; i++) {
-                addMessage(json.data[i].author, json.data[i].text,
-                           json.data[i].color, new Date(json.data[i].time));
+            if (userData && userData.name) {
+                myName = userData.name;
+                connection.send(myName);
+            } else {
+                status.text('Choose name:');
             }
-        } else if (json.type === 'typing') {
-            var usersTyping = Object.keys(json.data);
-            var resultTyping = [];
+            
+        };
 
-            for (var i = 0; i < usersTyping.length; i++) {
-                resultTyping.push(json.data[usersTyping[i]])
+        connection.onerror = function (error) {
+            // just in there were some problems with conenction...
+            content.html($('<p>', { text: 'Sorry, but there\'s some problem with your '
+                                        + 'connection or the server is down.' } ));
+        };
+
+        // most important part - incoming messages
+        connection.onmessage = function (message) {
+            // try to parse JSON message. Because we know that the server always returns
+            // JSON this should work without any problem but we should make sure that
+            // the massage is not chunked or otherwise damaged.
+            try {
+                var json = JSON.parse(message.data);
+            } catch (e) {
+                console.log('This doesn\'t look like a valid JSON: ', message.data);
+                return;
             }
-            typing.text(resultTyping.length ? resultTyping.join(', ') + ' - Is typing' : '');
-        } else if (json.type === 'message') { // it's a single message
-            input.removeAttr('disabled'); // let the user write another message
-            input.focus(); // focus
-            addMessage(json.data.author, json.data.text,
-                       json.data.color, new Date(json.data.time));
-        } else {
-            console.log('Hmm..., I\'ve never seen JSON like this: ', json);
-        }
-    };
+
+            // NOTE: if you're not sure about the JSON structure
+            // check the server source code above
+            if (json.type === 'color') { // first response from the server with user's color
+                myColor = json.data;
+                status.text(myName + ': ').css('color', myColor);
+                var userData = {name: myName};
+
+                localStorage.setItem('userData', JSON.stringify(userData));
+                input.removeAttr('disabled').focus();
+                // from now user can start sending messages
+            } else if (json.type === 'history') { // entire message history
+                // insert every single message to the chat window
+                for (var i=0; i < json.data.length; i++) {
+                    addMessage(json.data[i].author, json.data[i].text,
+                               json.data[i].color, new Date(json.data[i].time));
+                }
+            } else if (json.type === 'typing') {
+                var usersTyping = Object.keys(json.data);
+                var resultTyping = [];
+
+                for (var i = 0; i < usersTyping.length; i++) {
+                    resultTyping.push(json.data[usersTyping[i]])
+                }
+                typing.text(resultTyping.length ? resultTyping.join(', ') + ' - Is typing' : '');
+            } else if (json.type === 'message') { // it's a single message
+                input.removeAttr('disabled'); // let the user write another message
+                input.focus(); // focus
+                addMessage(json.data.author, json.data.text,
+                           json.data.color, new Date(json.data.time));
+            } else if (json.type === 'alive') {
+                allAlive = json.data;
+
+                addAlive(allAlive);
+            } else {
+                console.log('Hmm..., I\'ve never seen JSON like this: ', json);
+            }
+        };
+    }
+
+    addLiseners();
+    
 
     /**
      * Send mesage when user presses Enter key
@@ -110,7 +124,13 @@
                 return;
             }
             // send the message as an ordinary text
-            connection.send(msg);
+            if (toPersonKey) {
+                connection.send('{{private=' + toPersonKey + '}}'+ msg);
+                toPersonKey = null;
+            } else {
+                connection.send(msg);
+            }
+            
             $(this).val('');
             // disable the input field to make the user wait until server
             // sends back response
@@ -135,6 +155,26 @@
 		   debounceIndex = null;
 		}, debounceDelay);
     });
+	
+	connection.onclose = function(event) {
+		console.log(arguments);
+	}
+	
+	$logInOut.click(function() {
+        if (connection.readyState == 1) {
+            connection.close();
+            localStorage.setItem('userData', '{"name":null}');
+            $logInOut.text('Log In');
+            status.text('You logged out!');
+            myName = false;
+        } else {
+            connection = new WebSocket('ws://192.168.1.74:1337');
+            addLiseners();
+            $logInOut.text('Log Out');
+            status.text('Connecting..');
+            input.val('');
+        }
+    })
 
     /**
      * This method is optional. If the server wasn't able to respond to the
@@ -168,5 +208,20 @@
              + (dt.getHours() < 10 ? '0' + dt.getHours() : dt.getHours()) + ':'
              + (dt.getMinutes() < 10 ? '0' + dt.getMinutes() : dt.getMinutes())
              + ': ' + message + '</p>');
+    }
+
+    function addAlive(allAlives) {
+        var keys = Object.keys(allAlives);
+
+        $isAlive.html('');
+
+        keys.forEach(function(key) {
+            var item = $('<li>').attr('data-key', key).text(allAlives[key]);
+            item.on('click', function() {
+                toPersonKey = key;
+                input.focus();
+            })
+            $isAlive.append(item);
+        });
     }
 })(jQuery);
