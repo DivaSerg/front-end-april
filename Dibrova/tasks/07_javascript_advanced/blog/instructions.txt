@@ -1,0 +1,9 @@
+1 server:
+npm install  - folder: blog
+npm start
+
+2 server:
+node server.js  -  folder: server
+
+localhost:8000  -  open page
+
