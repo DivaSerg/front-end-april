@@ -3,39 +3,26 @@ html, body {
 	margin: 0;
 	width: 100%;
  	height: 100%;
-	color: #000;
+	color: #656363;
 	font: 11px/1.2 Arial, Helvetica, sans-serif;
 }
 a {
 	text-decoration: none;
 }
-wrapper, header, main, footer {
+/*wrapper, header, main, footer {
 	margin: 0 auto;
 	max-width: 1500px;
 	height: auto;
-}
-header {
-	/*position: relative;*/
-	/*padding: 0 18%;*/
-}
-wrapper {
-	
-}
+}*/
 .top-bar {
-	/*padding: 0;
-	margin: 0;*/
 	height: 15px;
 	width: 100vw;
 	background-color: #f7f7f7;
-	/*background: red;*/
-	/*position: relative;*/
 }
 .header-contaner {
-	max-width: 1500px;
 	height: 100px;
 	margin: 0 18%;
 	position: relative;
-	box-sizing: border-box;
 }
 .top-bar-button {
 	width: 26px;
@@ -43,21 +30,20 @@ wrapper {
 }
 header .logo {
 	position: absolute;
-	/*left: 1%;*/
 	width: 125px;
 	font-family: Arial;
 	font-size: 20px;
 	font-weight: bold;
 	text-transform: uppercase;
-	color: #656363;
-	width: 980px;
-	top: 19%;
+	width: 130px;
+	top: 19px;
 }
 .header-navigation ul {
+	margin: 0;
 	position: absolute;
 	width: 45%;
 	right: 36%;
-	top: 30%;
+	top: 42px;
 }
 .header-navigation ul li {
 	display: inline-block;
@@ -70,9 +56,9 @@ header .logo {
 }
 .shoping-cart {
 	position: absolute;
-	width: 7%;
-	right: 0%;
-	top: 27%;
+	width: 70px;
+	right: 0;
+	top: 27px;
 }
 .billboard {
 	height: 430px;
@@ -93,7 +79,7 @@ header .logo {
 .billboard .p2 {
 	font-size: 2em;
 }
-.billboard .but1 {
+.billboard .button1 {
 	height: 50px;
 	width: 212px;
 	background: #ffffff;
@@ -110,49 +96,208 @@ header .logo {
 	font-size: 2em;
 	font-weight: bold;
 	text-transform: uppercase;
-	color: #656363;
 	text-align: center;
 }
-.body .products {
-	box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: row;
+.flex-container {
+	display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-content: space-between;
+}
+main .flex-container {
+	padding: 5% 0;
 }
 .body .product-img {
 	width: 100%;
-	padding: 15% 0;
+	padding: 5% 0 15% 0;
 	display: flex;
   justify-content: center;
 }
 .body .product {
 	box-sizing: border-box;
-  height: 100%;
   flex-basis: 29.7%;
-  position: relative;
   border: 1px solid #9d9d9d;
-  /*margin: 1.8%;*/
   padding: 2% 0;
+  position: relative;
 }
-.body .products .p1 {
+.price-tag {
+	height: 37px;
+	width: 77px;
+	background: #f54d56;
+	position: absolute;
+}
+.price-tag p {
+	color: white;
+	font-size: 1.7em;
+	padding: 11% 20%;
+	margin: 0;
+}
+.body .p1 {
 	font-size: 1.5em;
 	padding: 2% 0;
   margin: 0;
-	/*font-weight: bold;*/
 	text-transform: uppercase;
-	color: #656363;
 	text-align: center;
 }
-.body .products .p2 {
+.body .p2 {
 	margin: 0;
 	padding: 2% 0;
 	font-size: 1.7em;
 	font-weight: bold;
 	text-transform: uppercase;
-	color: #656363;
 	text-align: center;
+}
+.body .brands .brand {
+	flex-basis: 15%;
+}
+
+footer {
+	margin: 0 18%;
+}
+#social {
+	position: relative;
+	margin: 0;
+}
+#social li {
+  position: absolute;
+	list-style: none;
+	top: 0;
+}
+#social li, #social a {
+	height: 19px;
+	display: block;
+}
+#social1 {
+	left: 0px;
+	width: 19px;
+	background: url(../image/social-icons.png) 0 0;
+}
+#social2 {
+	left: 30px;
+	width: 19px;
+	background: url(../image/social-icons.png) -35px 0;
+}
+#social3 {
+	left: 70px;
+	width: 19px;
+	background: url(../image/social-icons.png) -75px 0;
+}
+#social4 {
+	left: 105px;
+	width: 19px;
+	background: url(../image/social-icons.png) -110px 0;
+}
+#social5 {
+	left: 143px;
+	width: 19px;
+	background: url(../image/social-icons.png) -143px 0;
+}
+.footer-navigation {
+	margin: 0;
+	padding: 0;
+	flex-basis: 50%;
+}
+.support-menu {
+	flex-basis: 50%;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.navigation-menu {
+	list-style: none;
+}
+footer ul li a {
+	font-size: 1.5em;
+	line-height: 1.5;
+	color: #656363;
+}
+footer h3 {
+	padding: 15px 0;
+	font-size: 1.7em;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+footer p, h4, h3 {
+	margin: 0;
+}
+footer .p3 {
+	padding: 0 0 35px 0;
+	font-size: 1.5em;
+	line-height: 2;
+}
+footer .stores {
+	flex-basis: 33%;
+	padding-right: 10%;
+	box-sizing: border-box;
+}
+footer .blog-posts {
+	flex-basis: 36%;
+}
+footer .support {
+	flex-basis: 28%;
+}
+footer h4 {
+	padding: 0 0 6px 0;
+	font-size: 1.5em;
+}
+footer .p4 {
+	padding: 0 0 25px 0;
+	font-size: 1.5em;
+	line-height: 1.5;
+}
+footer .flex-container {
+	padding: 50px 0;
+	border-top: 1px solid #f2f1f1;
+	border-bottom: 1px solid #f2f1f1;
+}
+footer .support .flex-container {
+	padding: 0;
+	border-top: none;
+	border-bottom: none;
+}
+.copyright #cards {
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+#cards li {
+  position: absolute;
+	list-style: none;
+	top: 0;
+}
+#cards li, #cards a {
+	height: 20px;
+	display: block;
+}
+#card1 {
+	left: 0px;
+	width: 32px;
+	background: url(../image/cards-icons.png) 0 0;
+}
+#card2 {
+	left: 52px;
+	width: 32px;
+	background: url(../image/cards-icons.png) -52px 0;
+}
+#card3 {
+	left: 104px;
+	width: 32px;
+	background: url(../image/cards-icons.png) -104px 0;
+}
+#card4 {
+	left: 156px;
+	width: 32px;
+	background: url(../image/cards-icons.png) -156px 0;
+}
+.copyright {
+	padding: 20px 0 30px 0;
+}
+.copyright-text {
+	float: left;
+	font-size: 1.3em;
+	width: 60%;
+}
+.cards-icons {
+	float: right;
+	margin: 0 50px;
+	width: 15%;
 }
