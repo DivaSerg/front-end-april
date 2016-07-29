@@ -1,0 +1,175 @@
+/* Базовые стили демо-страницы */
+
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font: 1.000em/3.000em "Open Sans", sans-serif;
+    color: #555;
+    background: #fafafa;
+}
+
+
+/*стили фиксированного меню*/
+
+.nav {
+    background: #555555;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+    left: 0;
+    opacity: 0.95;
+    padding: .500em;
+    vertical-align: middle;
+    font-size: 2.000em;
+    text-align: center;
+    color: yellow;
+}
+
+main {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2.000em;
+}
+
+p {
+    margin: 0 0 5px;
+    line-height: 1.5;
+}
+
+
+/* Конец стилей демо-страницы */
+
+
+/* Базовый контейнер табов */
+
+.tabs {
+    margin-bottom: 2.000em;
+}
+
+
+/* Стили секций с содержанием */
+
+section {
+    display: none;
+    width: 100%;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+.tabs input {
+    display: none;
+}
+
+
+/* Стили вкладок (табов) */
+
+.tabs label {
+    display: inline-block;
+    margin: 0 0 -1px;
+    width: 7.000em;
+    font-weight: 600;
+    text-align: center;
+    color: #aaa;
+    border: 1px solid #ddd;
+    background: #f1f1f1;
+    border-radius: 3px 3px 0 0;
+}
+
+
+/* изменения стиля заголовков вкладок при наведении */
+
+.tabs label:hover {
+    color: #888;
+    cursor: pointer;
+}
+
+
+/* стили для активной вкладки */
+
+.tabs input:checked + label {
+    color: #555;
+    border: 1px solid #ddd;
+    border-top: 1px solid #009933;
+    border-bottom: 1px solid #fff;
+    background: #fff;
+}
+
+
+/* активация секций с помощью переключателя :checked */
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4,
+#tab5:checked ~ #content5,
+#tab6:checked ~ #content6,
+#tab7:checked ~ #content7,
+#tab8:checked ~ #content8,
+#tab9:checked ~ #content9,
+#tab10:checked ~ #content10,
+#tab11:checked ~ #content11,
+#tab12:checked ~ #content12,
+#tab13:checked ~ #content13,
+#tab14:checked ~ #content14,
+#tab15:checked ~ #content15,
+#tab16:checked ~ #content16,
+#tab17:checked ~ #content17,
+#tab18:checked ~ #content18,
+#tab19:checked ~ #content19,
+#tab20:checked ~ #content20,
+#tab21:checked ~ #content21 {
+    display: block;
+}
+
+
+/*стили для input js*/
+
+input.jsdefault {
+    width: 15.000em;
+    height: 2.000em;
+    display: block;
+    margin: 1.000em;
+    padding: 0.500em;
+    border-radius: 8px;
+    vertical-align: middle;
+    outline: none;
+    font: 1.000em "Open Sans", sans-serif;
+}
+
+p.js__text {
+    font-weight: 700;
+}
+
+input.js__button {
+    margin: 1.000em;
+    box-shadow: 0px 10px 14px -7px #04772a;
+    background-color: #009933;
+    border: 1px solid #017427;
+    cursor: pointer;
+    color: #ffffff;
+    text-align: center;
+}
+
+input.js__button:hover {
+    background-color: #05812e;
+}
+
+input.js__button:active {
+    position: relative;
+    top: 1px;
+}
+textarea {
+  outline: none;
+  text-align: center;
+  font: 700 2.000em "Open Sans", sans-serif;
+}

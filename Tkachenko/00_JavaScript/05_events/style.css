@@ -1,0 +1,84 @@
+/* Базовые стили демо-страницы */
+
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font: 1.000em/3.000em "Open Sans", sans-serif;
+    color: #555;
+    background: #fafafa;
+}
+
+
+/*стили фиксированного меню*/
+
+.nav {
+    background: #555555;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+    left: 0;
+    opacity: 0.95;
+    padding: .500em;
+    vertical-align: middle;
+    font-size: 2.000em;
+    text-align: center;
+    color: yellow;
+}
+
+main {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2.000em;
+}
+
+
+
+/* Стили секций с содержанием */
+
+section {
+    width: 100%;
+    padding: 1.000em;
+    margin: 1.000em;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+/* Стили для списков */
+
+li ~ ul {
+  color: darkred;
+  }
+
+ul > li, ul > li > ul {
+  margin-left: 2.000em;
+  margin-right: 2.000em;
+}
+
+/*ul {
+  background: MediumSpringGreen;
+}
+
+ul ul {
+  background: MediumSeaGreen;
+}
+
+ul ul ul {
+  background: LightGreen;
+}
+
+ul ul ul ul {
+  background: DarkSeaGreen;
+}
+
+ul ul ul ul ul {
+  background: Aquamarine;
+}*/

@@ -1,0 +1,9 @@
+/*.menu ul{
+  display: none;
+}
+*/.menu li{
+  list-style-type: none;
+}
+span {
+  text-transform: capitalize;
+}

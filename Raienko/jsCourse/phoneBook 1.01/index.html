@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>&trade;Raienko</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<form id="tableControll" onclick="return false">
+		<button id="loadBtn">load table</button>
+		<button id="clearBtn">clear table</button>
+		<button id="saveBtn">save table</button>
+	</form>
+	<form onclick="return false">
+		<input type="text" id="input-search" placeholder="Name(case sensitive)">
+		<button id="searchBtn">search</button>
+		<button id="resetBtn">reset</button>
+	</form>
+	<table id="phonebook">
+		<thead id="phoneBookHeader">
+			<tr>
+				<th>Name</th>
+				<th>Phone</th>
+				<th>Email</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody id="phoneBookBody">
+
+		</tbody>
+	</table>
+	<form id="input-form" onclick="return false">
+		<input type="text" id="input-name" name="name" placeholder="Name">
+		<input type="text" id="input-phone" name="phone" placeholder="Phone">
+		<input type="text" id="input-email" name="email" placeholder="Email">
+		<button id="addBtn">Add contact</button>
+	</form>
+	<div>
+		<pre>
+			Написать телефонную книгу.
+phone-book.js – здесь будет ваш код. В нём 2 метода, которые вы должны реализовать:
+  add(name, phone, email) – добавляет запись в телефонную книгу, если какое-либо из полей не валидно, то запись не добавляется;
+  remove(query) – удаляет запись из телефонной книги по запросу;
+  search(string) - поиск по имени контакта
+  reset() - сбросить поиск
+
+Name 
+/^[a-zA-Z ]{2,30}$/
+valid:
+John Greed
+Garry Li
+
+invalid:
+12korry
+John (Jame)
+
+UPD. E-mail (от kvf77):
+^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$
+
+Регулярное выражение для валидации номера телефона:
+^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$
+Ориентировано на российские мобильные + 
+городские с кодом из 3 цифр (например, Москва).
+
+Зеленый свет для:
++79261234567
+89261234567
+79261234567
++7 926 123 45 67
+8(926)123-45-67
+123-45-67
+9261234567
+79261234567
+(495)1234567
+(495) 123 45 67
+89261234567
+8-926-123-45-67
+8 927 1234 234
+8 927 12 12 888
+8 927 12 555 12
+8 927 123 8 123
+		</pre>
+	</div>
+
+	<script src="magic.js" type="text/javascript"></script>
+</body>
+</html>

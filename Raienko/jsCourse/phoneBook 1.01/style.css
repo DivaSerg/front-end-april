@@ -1,0 +1,42 @@
+table *{
+	width: 150px;
+	border: 1px solid black;
+	text-align: center;
+}
+table th {
+	background: gray;
+	border: 2px solid black;
+	color: white;
+}
+table tbody tr:nth-child(even) {
+	background: #E6E6E6;
+}
+form {
+  font-size: 0;
+}
+input,button {
+  width: 152px;
+  font-size: 15px;
+  text-align: center;
+  border: 2px solid black;
+  margin-left: 2px;
+} 
+button {
+  width: 156px;
+}
+#tableControll {
+  margin-bottom: 2px;
+}
+#tableControll button {
+  color: white;
+  font-weight: bold;
+}
+#tableControll button:nth-child(1) {
+  background-color: #55AAFF;
+}
+#tableControll button:nth-child(2) {
+  background-color: #E89B00;
+}
+#tableControll button:nth-child(3) {
+  background-color: #009F00;
+}
