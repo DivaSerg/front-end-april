@@ -1,0 +1,52 @@
+{
+    "goods": [{
+            "id": 0,
+            "title": "John Varvatos Star Laceless Low Top Sneaker",
+            "SKU": "8757630",
+            "type": "shoes",
+            "gender": "M",
+            "sizes": [8, 9, 10, 11, 12],
+            "brand": "John Varvatos",
+            "price": 89.99,
+            "description": "Faux leather upper flaunts the classic look you've been looking for. Slip-on construction.Detailing metal eyelets.Synthetic lining.Lightly padded footbed.Rubber outsole.Imported.Product measurements were taken using size 11, width D - Medium. Please note that measurements may vary by size.",
+            "photo": ["http://a3.zassets.com/images/z/3/8/0/8/3/0/3808305-p-MULTIVIEW.jpg", "http://a2.zassets.com/images/z/3/8/0/8/3/0/3808305-1-MULTIVIEW.jpg", "http://a3.zassets.com/images/z/3/8/0/8/3/0/3808305-2-MULTIVIEW.jpg", "http://a3.zassets.com/images/z/3/8/0/8/3/0/3808305-3-MULTIVIEW.jpg", "http://a9.zassets.com/images/z/3/8/0/8/3/0/3808305-4-MULTIVIEW.jpg"]
+        },
+
+        {
+            "id": 1,
+            "title": "PUMA Fan Tee",
+            "SKU": "8818638",
+            "type": "t-short",
+            "gender": "M",
+            "sizes": ["S", "M", "L", "XL"],
+            "brand": "PUMA",
+            "price": 15.99,
+            "description": "You're ready for gold in this PUMA® Fan Tee. PUMA® Lifestyle apparel marries the essence of sports performance with the refined finishes and detailing of the fashion industry. Classic crew neckline. Short sleeves. Screen print at front. Straight hem.",
+            "photo": ["http://a1.zassets.com/images/z/3/5/0/4/3/2/3504324-p-MULTIVIEW.jpg", "http://a1.zassets.com/images/z/3/5/0/4/3/2/3504324-1-MULTIVIEW.jpg", "http://a1.zassets.com/images/z/3/5/0/4/3/2/3504324-2-MULTIVIEW.jpg", "http://a3.zassets.com/images/z/3/5/0/4/3/2/3504324-3-MULTIVIEW.jpg"]
+        },
+
+        {
+            "id": 2,
+            "title": "Quiksilver Blasted Trucker Hat",
+            "SKU": "8683070",
+            "type": "accessories",
+            "gender": "M",
+            "sizes": ["Man size"],
+            "brand": "Quiksilver",
+            "price": 10.99,
+            "description": "Surf's up with the rad style of the Quiksilver® Blasted trucker hat. Classic trucker hat design. Five-panel construction. Embroidered logo patch adorns front. Printed front panel for added style. Mesh backing for breathable wear.",
+            "photo": ["http://a3.zassets.com/images/z/3/5/1/2/9/6/3512963-p-MULTIVIEW.jpg", "http://a1.zassets.com/images/z/3/5/1/2/9/6/3512963-1-MULTIVIEW.jpg", "http://a2.zassets.com/images/z/3/5/1/2/9/6/3512963-2-MULTIVIEW.jpg", "http://a1.zassets.com/images/z/3/5/1/2/9/6/3512963-3-MULTIVIEW.jpg"]
+        }, {
+            "id": 3,
+            "title": "Timbuk2 Set Pack",
+            "SKU": "8792421",
+            "type": "bags",
+            "gender": "MW",
+            "sizes": ["One size"],
+            "brand": "Timbuk2",
+            "price": 137.99,
+            "description": "Sometimes your day doesn't end at the office. The Timbuk2® Set Pack is the perfect bag for those who make a daily detours to mysterious locations throughout the day. Spacious backpack with tons of organization options. Large main compartment with zip pocket and organization panel. Laptop sleeve fits devices up to 15. Secondary compartment with floating divider for storing wet or soiled items.",
+            "photo": ["http://a2.zassets.com/images/z/3/7/5/6/0/0/3756001-p-MULTIVIEW.jpg", "http://a1.zassets.com/images/z/3/7/5/6/0/0/3756001-1-MULTIVIEW.jpg", "http://a3.zassets.com/images/z/3/7/5/6/0/0/3756001-4-MULTIVIEW.jpg"]
+        }
+    ]
+}
