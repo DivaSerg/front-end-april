@@ -16,7 +16,6 @@
 
         if ((params.method === 'PUT' || params.method === 'POST')) {
             request.setRequestHeader('Content-Type', 'application/' + params.dataType)
-
         }
 
         request.onload = function() {
@@ -49,21 +48,14 @@
             dataType: "json"
         };
 
-
         sendRequest(params, function(error, data) {
 
-
-
-
             if (error) throw handlerError(error);
-
             ALL_DATA = data;
 
             console.log(data);
 
             createArticle(ALL_DATA);
-
-
         });
 
     };
@@ -73,36 +65,50 @@
     function createArticle(data) {
 
         var i,
-        template = '',
-        dataLen = data.length;
+            dataLen = data.length;
 
         if (!dataLen) return;
 
         for (i = 0; i < dataLen; i++) {
-            
-            var obj = data[i];
 
+            var obj = data[i];
             // console.log(data[i].title);
 
             for (var key in obj) {
-                
 
-                if (key !== 'title') {
+                if (key == 'title') {
 
-                   template += `<li>
-                                <span>` + obj['title'] + `</span>
-                            </li>`;
-                };
+                    var newLi = document.createElement('li');
+                    newLi.className = "title";
+                    newLi.innerHTML = '<span>' + obj[key] + '</span>';
+                    list.appendChild(newLi);
 
+                }
+                // else {
+                //     li2 += `<li>` + key + ' : ' + obj[key] + `</li>`;
+                //     var ul = '<ul>' + li2 + '</ul>';
+                // }
+            };
+
+            for (var key in obj) {
+
+                var newUl = document.createElement('ul');
+                newUl.className = "newUl";
+                newUl.innerHTML = '';
+                var title = document.getElementsByClassName('title');
+                title.innerHTML = '<ul>' + '<li>' + key + ' : ' + obj[key] + '</li>' + '</ul>';;
             }
 
+            // console.log(li);
 
-        }
+            // var list = document.getElementById('list');
+            // list.innerHTML = li;
 
-        var list = document.getElementById('list');
-        list.innerHTML = template;
-        console.log(template);
+
+        };
+
+
+        // list.innerHTML = ul;
     }
 
-    
 })();
