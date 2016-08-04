@@ -5,25 +5,27 @@
   <title>Store</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<style>
-.alert {
-  padding: 15px;
-  border: 1px solid #d6e9c6;
-  border-radius: 4px;
-  color: #3c763d;
-  background-color: #dff0d8;
-}
-</style>
+
 
 <body>
-  <h3>Моя страница</h3>
+  <h1>Создание списка</h1>
+
+  <script>
+    var ul = document.createElement('ul');
+    document.body.appendChild(ul);
+
+    while (true) {
+      var data = prompt("Введите текст для пункта списка", "");
+
+      if (!data) {
+        break;
+      }
+
+      var li = document.createElement('li');
+      li.appendChild(document.createTextNode(data));
+      ul.appendChild(li);
+    }
+  </script>
+
 </body>
-
-<script>
-  var div = document.createElement('div');
-  div.className = "alert alert-success";
-  div.innerHTML = "<strong>Ура!</strong> Вы прочитали это важное сообщение.";
-
-  document.body.appendChild(div);
-</script>
 </html>

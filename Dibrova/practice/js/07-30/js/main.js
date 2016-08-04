@@ -76,39 +76,35 @@
 
             for (var key in obj) {
 
+                var newLi = document.createElement('li'),
+                    titleId = 'title' + i;
+                newLi.setAttribute("id", titleId);
+
                 if (key == 'title') {
 
-                    var newLi = document.createElement('li');
-                    newLi.className = "title";
                     newLi.innerHTML = '<span>' + obj[key] + '</span>';
                     list.appendChild(newLi);
 
                 }
-                // else {
-                //     li2 += `<li>` + key + ' : ' + obj[key] + `</li>`;
-                //     var ul = '<ul>' + li2 + '</ul>';
-                // }
             };
-
-            for (var key in obj) {
-
-                var newUl = document.createElement('ul');
-                newUl.className = "newUl";
-                newUl.innerHTML = '';
-                var title = document.getElementsByClassName('title');
-                title.innerHTML = '<ul>' + '<li>' + key + ' : ' + obj[key] + '</li>' + '</ul>';;
-            }
-
-            // console.log(li);
-
-            // var list = document.getElementById('list');
-            // list.innerHTML = li;
-
-
         };
 
 
-        // list.innerHTML = ul;
+        for (i = 0; i < dataLen; i++) {
+
+            var ul = document.createElement('ul');
+            titleId.appendChild(ul);
+
+            for (var key in obj) {
+
+                var li = document.createElement('li'),
+                    data = key + ' : ' + obj[key];
+                li.appendChild(document.createTextNode(data));
+                ul.appendChild(li);
+            }
+        }
+
+
     }
 
 })();
