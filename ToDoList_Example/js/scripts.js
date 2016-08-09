@@ -61,11 +61,11 @@
 	  $addTask.click(function() {
 	  	var
 	  	 taskId = (Math.round(Math.random() * 100000000)).toString(36),
-	  	 $form = $(this).parents('form')
+	  	 $form = $(this).parents('form'),
 	  	 task = $form.serializeObject();
 
 	  	task.status = 'todo';
-			task.type = 'upsert'
+			task.type = 'upsert';
 
 			handlerMessage(task);
 
