@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="main.js"></script>
+
+    <script>
+    	var someValue = 5000 * Math.random();
+    	var promise = new Promise(function(resolve,reject) {
+    		setTimeout(function() {
+
+    		})
+    	})
+
+
+
+    	promise
+    	.then(function(result) {
+    		return Math.round(result);
+    	})
+    	.then(function(result) {
+    		console.log(result);
+    		throw new Error('Custom Error');
+    	})
+    	.cath()
+
+    </script>
+    
+</head>
+
+<body>
+	
+</body>
+
+</html>
