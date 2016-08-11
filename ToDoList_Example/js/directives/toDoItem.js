@@ -26,14 +26,9 @@ myApp.directive('toDoItem', function() {
   		$scope.onRemove({taskId: $scope.taskId});
   	};
 
-  	$scope.changeStatus = function(status) {
-  		if (status == 'todo') {
-  			$scope.itemData.status = 'inprogress';
-  		}
-  		if (status == 'inprogress') {
-  			$scope.itemData.status = 'done';
-  		}
-  	}
+    $scope.changeStatus = function() { 
+      $scope.onStatusChange({taskId: $scope.taskId});
+    }
   }
 
   return {
@@ -41,7 +36,8 @@ myApp.directive('toDoItem', function() {
   	scope: {
   		itemData: '=',
   		taskId: '@',
-			onRemove: '&'
+			onRemove: '&',
+      onStatusChange: '&'
   	},
     template: ['<div class="item">',
 							    '<div class="close">',
@@ -54,7 +50,7 @@ myApp.directive('toDoItem', function() {
     							'<p>',
     								'<button',
     								' type="button"',
-    								' class="btn "',
+    								' class="btn"',
     								' ng-class="getBtnClass(itemData.status)"',
     								' ng-click="changeStatus(itemData.status)"',
     								'ng-if="getBtnName(itemData.status)">{{getBtnName(itemData.status)}}</button>',

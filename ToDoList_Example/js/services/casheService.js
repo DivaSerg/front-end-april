@@ -9,7 +9,11 @@ myApp.factory('casheService', function($q, apiService) {
 		} else {
 			apiService.getBoard(boardName)
 				.success(function(data) {
-					board = data;
+					if (!Array.isArray(data)) {
+						board = data;
+					} else {
+						board = {};
+					}
 
 					deferred.resolve(board);
 				})
@@ -21,7 +25,16 @@ myApp.factory('casheService', function($q, apiService) {
 		return deferred.promise;
 	}
 
+	function _updateTask(task) {
+		if (task.type == 'upsert') {
+            board[task.taskId] = task;
+        } else if (task.type == 'delete') {
+            delete board[task.taskId];
+        }
+	}
+
 	return {
-		getBoardData: _getBoardData
+		getBoardData: _getBoardData,
+		updateTask: _updateTask
 	}
 });

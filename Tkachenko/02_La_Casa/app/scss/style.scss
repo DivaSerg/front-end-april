@@ -41,8 +41,12 @@ h2 {
     font: 2.250em "P22 Corinthia";
     text-align: center;
     color: #ffffff;
+    @include respond(480, 992) {
+        font-size: 4.000em;
+        padding: 0;
+    }
     @include respond(992, 4800) {
-        font: 6.250em "P22 Corinthia";
+        font-size: 6.250em;
     }
     @include respond-to(1200) {
         margin-top: 1.800em;
@@ -103,6 +107,14 @@ img {
     }
 }
 
+.hidden {
+    display: none;
+}
+
+.fa-arrow-right:before {
+  content: "\f061";
+}
+
 #back-to-top {
     position: fixed;
     bottom: 0.300em;
@@ -134,6 +146,7 @@ img {
     display: block;
     clear: both;
 }
+
 @import "header";
 @import "main";
 @import "footer";

@@ -2,7 +2,7 @@
 
 main {
   @include respond-to(992) {
-    padding: 2.500em 5.000em;
+    padding: 2.500em 0;
   }
   @include respond-to(1200) {
     padding: 2.300em 5.000em 4.000em;
@@ -17,6 +17,20 @@ main {
   }
 }
 
+.article {
+  &__link {
+    padding: 0 0 0.800em 0.800em;
+    font: 0.800em "Arial";
+    text-transform: uppercase;
+    color:$gray;
+
+    &--categoryandtags {
+      padding: 0;
+      font-size: 0.700em;
+    }
+  }
+}
+
 .articleleftpart {
   width: 15%;
   float: left;
@@ -27,30 +41,13 @@ main {
     padding-bottom: 0.300em;
     text-transform: uppercase;
     text-align: center;
-    color: dimgray;
+    color: $dimgray;
 
     &::after {
       font: 0.750em Arial;
-      color: dimgray;
+      color: $dimgray;
     }
 
-    &:first-of-type::after {
-      content: " 12";
-    }
-
-    &:nth-of-type(2)::after {
-      content: " 31 people";
-    }
-
-    &:last-of-type::after {
-      content: " admin";
-    }
-
-    & > br {
-      @include respond(992, 4801) {
-        display: none;
-      }
-    }
     @include respond(992, 4801) {
       text-align: left;
     }
@@ -69,7 +66,7 @@ main {
 
   &__soсial {
     padding-bottom: 0.800em;
-    border-bottom: 2px groove lightgray;
+    border-bottom: 2px groove $lightgray;
   }
 
   &__category {
@@ -113,25 +110,13 @@ main {
 
   &__inside {
     padding: 0 1.200em;
-    background-color: white;
+    background-color: $white;
     border-radius: 4px;
   }
 
   &__post {
     padding-bottom: 1.900em;
     font: 400 0.800em/1.500em "Arial";
-  }
-
-  &__link {
-    padding: 0 0 0.800em 0.800em;
-    font: 0.800em "Arial";
-    text-transform: uppercase;
-    color: gray;
-
-    &--categoryandtags {
-      padding: 0;
-      font-size: 0.700em;
-    }
   }
 
   &__image {
@@ -144,7 +129,7 @@ main {
 .articlelink__tag {
   font: 0.750em Arial;
   text-transform: uppercase;
-  color: dimgray;
+  color: $dimgray;
 }
 
 .fa-commenting,
@@ -164,14 +149,14 @@ main {
 }
 
 .circle {
-  border-bottom: 2px groove lightgray;
+  border-bottom: 2px groove $lightgray;
   text-align: center;
 
   &__inside {
     margin: 0 0.300em;
     width: 6.500em;
     height: 6.500em;
-    border: 10px solid white;
+    border: 10px solid $white;
     border-radius: 3.250em;
     text-align: center;
     vertical-align: middle;
@@ -187,7 +172,7 @@ main {
     padding: 0.600em 2.000em;
     width: 100%;
     font-size: 0.800em;
-    color: dimgray;
+    color: $dimgray;
   }
 }
 
@@ -195,7 +180,7 @@ main {
 .fa-twitter {
   padding-top: 0.300em;
   font-size: 3.700em;
-  color: white;
+  color: $white;
 }
 
 .paginator {
@@ -225,13 +210,13 @@ main {
     padding-top: 0.3em;
     width: 30px;
     height: 30px;
-    border: 1px solid lightgray;
+    border: 1px solid $lightgray;
     background-color: #f2f2f2;
     text-align: center;
 
     &:hover {
-      border: 1px solid dimgray;
-      background-color: lightgray;
+      border: 1px solid $dimgray;
+      background-color: $lightgray;
     }
 
     a {
@@ -257,7 +242,7 @@ main {
   &__fild {
     margin-bottom: 0.500em;
     padding: 0.300em;
-    color: lightgray;
+    color: $lightgray;
   }
 
   &__button {
@@ -265,10 +250,10 @@ main {
     text-align: center;
     background-color: $brandedcolor;
     border-radius: 4px;
-    color: white;
+    color: $white;
 
     &:hover {
-      background-color: lightgray;
+      background-color: $lightgray;
       color: $brandedcolor;
     }
   }
@@ -280,8 +265,8 @@ main {
   margin: 0.250em;
   width: 110px;
   height: 110px;
-  background-color: white;
-  border: 1px solid lightgray;
+  background-color: $white;
+  border: 1px solid $lightgray;
 
   &__text {
     display: inline-block;
@@ -290,7 +275,7 @@ main {
     font-size: 0.750em;
     line-height: 110px;
     vertical-align: middle;
-    color: lightgray;
+    color: $lightgray;
   }
 }
 
@@ -302,9 +287,9 @@ main {
     margin-top: 0.600em;
     padding: 0.400em 0.400em 0.400em 0.800em;
     font-size: 0.800em;
-    background-color: white;
+    background-color: $white;
     border-radius: 8px;
-    color: lightgray;
+    color: $lightgray;
 
     &:hover {
       color: black;

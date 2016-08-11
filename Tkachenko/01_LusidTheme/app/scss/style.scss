@@ -3,6 +3,11 @@
 @import "fonts";
 
 $brandedcolor: #5d9b9a;
+$dimgray: dimgray;
+$gray: gray;
+$lightgray: lightgray;
+$white: white;
+
 
 * {
     position: relative;
@@ -12,7 +17,6 @@ $brandedcolor: #5d9b9a;
 }
 
 html {
-    background: url("../img/background.png");
     @include respond-to(320) {
         font-size: 75%;
     }
@@ -28,6 +32,10 @@ html {
     @include respond-to(1200) {
         font-size: 100%;
     }
+}
+
+body {
+  background: url("../img/background.png");
 }
 
 h1 {
@@ -64,6 +72,9 @@ figure {
     @include respond(320, 768) {
         text-align: center;
     }
+    & > ul > li {
+      display: inline-block;
+    }
 }
 
 ul {
@@ -80,8 +91,8 @@ ul {
 
 .rss {
     position: absolute;
-    top: 2.400em;
-    right: 8.500em;
+    top: 0;
+    right: 2.500em;
     color: dimgray;
     @include respond(100, 768) {
         display: none;
@@ -94,7 +105,7 @@ ul {
 
     &__listitem {
         display: block;
-        text-transform: uppercase;    
+        text-transform: uppercase;
     }
 
     &__anchor {
@@ -106,33 +117,32 @@ ul {
     display: inline-block;
     margin-right: 1.700em;
 }
-
-#back-to-top {
-    position: fixed;
-    bottom: 0.300em;
-    right: 0.300em;
-    width: 1.000em;
-    height: 1.000em;
-    z-index: 9999;
-    vertical-align: middle;
-    border: 0;
-    border-radius: 0.500em;
-    background: #6db5b4;
-    transition: opacity 0.2s ease-out;
-    font-size: 3.000em;
-    text-align: center;
-    color: white;
-    opacity: 0;
-}
-
-#back-to-top:hover {
-    background: $brandedcolor;
-}
-
-#back-to-top.show {
-    opacity: 1;
-}
+//
+// #back-to-top {
+//     position: fixed;
+//     bottom: 0.300em;
+//     right: 0.300em;
+//     width: 1.000em;
+//     height: 1.000em;
+//     z-index: 9999;
+//     vertical-align: middle;
+//     border: 0;
+//     border-radius: 0.500em;
+//     background: #6db5b4;
+//     transition: opacity 0.2s ease-out;
+//     font-size: 3.000em;
+//     text-align: center;
+//     color: white;
+//     opacity: 0;
+// }
+//
+// #back-to-top:hover {
+//     background: $brandedcolor;
+// }
+//
+// #back-to-top.show {
+//     opacity: 1;
+// }
 @import "header";
-@import "nav";
 @import "main";
 @import "footer";

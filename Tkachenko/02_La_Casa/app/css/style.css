@@ -35,9 +35,13 @@ h2 {
   font: 2.250em "P22 Corinthia";
   text-align: center;
   color: #ffffff; }
+  @media only screen and (min-width: 480px) and (max-width: 991px) {
+    h2 {
+      font-size: 4.000em;
+      padding: 0; } }
   @media only screen and (min-width: 992px) and (max-width: 4799px) {
     h2 {
-      font: 6.250em "P22 Corinthia"; } }
+      font-size: 6.250em; } }
   @media only screen and (min-width: 1200px) and (max-width: 4800px) {
     h2 {
       margin-top: 1.800em; } }
@@ -88,6 +92,12 @@ img {
     .wrapper {
       width: 95%; } }
 
+.hidden {
+  display: none; }
+
+.fa-arrow-right:before {
+  content: "\f061"; }
+
 #back-to-top {
   position: fixed;
   bottom: 0.300em;
@@ -114,32 +124,39 @@ img {
 #header {
   padding: 0.500em 2.500em 0;
   background-color: #dadada; }
-  @media only screen and (min-width: 992px) and (max-width: 4800px) {
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
     #header {
-      padding: 6.250em 12.500em 23.125em;
+      padding: 6.250em 3.500em 23.125em; } }
+  @media only screen and (min-width: 480px) and (max-width: 4800px) {
+    #header {
       background: url("../img/hero_small.png") bottom no-repeat #dadada; } }
+  @media only screen and (min-width: 768px) and (max-width: 4800px) {
+    #header {
+      padding: 6.250em 12.500em 23.125em; } }
 
 .headertop {
   width: 100%;
   padding: 0.500em; }
-  @media only screen and (min-width: 992px) and (max-width: 4800px) {
+  @media only screen and (min-width: 480px) and (max-width: 4800px) {
     .headertop {
       position: absolute;
       top: 0;
       left: 0;
-      background-color: rgba(180, 185, 191, 0.65); } }
+      background-color: rgba(180, 185, 191, 0.45); } }
   @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .headertop {
       padding: 1.414em 4.500em 0; } }
   @media only screen and (min-width: 1200px) and (max-width: 4800px) {
     .headertop {
       padding: 1.414em 12.500em 0; } }
-  @media only screen and (min-width: 992px) and (max-width: 4800px) {
-    .headertop__left {
-      float: left; } }
-  @media only screen and (min-width: 992px) and (max-width: 4800px) {
-    .headertop__right {
-      float: right; } }
+  .headertop__left {
+    float: left; }
+  .headertop__right {
+    float: right; }
+
+@media only screen and (min-width: 0px) and (max-width: 479px) {
+  .headerbottom {
+    margin-top: 2.000em; } }
 
 .fa-bed:before,
 .fa-fax:before,
@@ -148,6 +165,15 @@ img {
 .fa-shopping-cart:before,
 .fa-sign-in:before {
   margin-right: 0.6em; }
+
+.fa-arrow-right,
+.fa-bars {
+  margin-top: 0.670em; }
+  .fa-arrow-right:before,
+  .fa-bars:before {
+    float: right;
+    font-size: 2.000em;
+    color: white; }
 
 .navigation {
   width: 6.250em;
@@ -164,18 +190,19 @@ img {
 
 h2 + ul {
   position: absolute;
-  display: none;
+  display: block;
   width: 260px;
   top: 100px;
   left: 50%;
   margin-left: -130px; }
+  @media only screen and (min-width: 480px) and (max-width: 991px) {
+    h2 + ul {
+      top: 80px; } }
   @media only screen and (min-width: 992px) and (max-width: 1254px) {
     h2 + ul {
-      display: block;
       top: 200px; } }
   @media only screen and (min-width: 1255px) and (max-width: 4800px) {
     h2 + ul {
-      display: block;
       top: 100px; } }
 
 .underh2__anchor {

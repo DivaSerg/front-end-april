@@ -1,0 +1,45 @@
+!!! 5
+%html{lang:"en"}
+
+  %head
+    %meta{charset:"UTF-8"}
+    %title Ikaros
+    %link{rel:"shortcut icon", href:"img/favicon.ico", type:"image/x-icon"}
+    %link{rel:"stylesheet", href:"https://fonts.googleapis.com/css?family=Droid+Sans"}
+    %link{rel:"stylesheet", href:"css/vendor.min.css"}
+    %link{rel:"stylesheet", href:"css/style.min.css"}
+
+  %body
+
+    .wrapper
+
+      %a#back-to-top.fa.fa-arrow-up{href:"#", title:"Back to top"}
+
+            -#  _____HEADER_____
+
+      %header#header
+        %img.header__logo{src:"img/logo.png", alt:"Ikaros"}
+        %ul.header__nav
+          %li.gradient
+            %a.gradient__link{href:"#"} Home
+          %li.gradient
+            %a.gradient__link{href:"#"} Service
+          %li.gradient
+            %a.gradient__link{href:"#"} Portfolio
+          %li.gradient
+            %a.gradient__link{href:"#"} About
+          %li.gradient
+            %a.gradient__link{href:"#"} Blog
+          %li.gradient
+            %a.gradient__link{href:"#"} Contact
+
+            -#  _____MAIN_____
+
+      %main
+
+            -#  _____FOOTER_____
+
+      %footer#footer
+
+    %script{src:"https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"}
+    %script{src:"scripts/script.min.js"}

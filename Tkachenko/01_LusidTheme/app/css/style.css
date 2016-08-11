@@ -19,23 +19,28 @@
   font-family: "Arial";
   box-sizing: border-box; }
 
-html {
+@media only screen and (min-width: 0px) and (max-width: 479px) {
+  html {
+    font-size: 75%; } }
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  html {
+    font-size: 80%; } }
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  html {
+    font-size: 87.5%; } }
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  html {
+    font-size: 95%; } }
+
+@media only screen and (min-width: 1200px) and (max-width: 4800px) {
+  html {
+    font-size: 100%; } }
+
+body {
   background: url("../img/background.png"); }
-  @media only screen and (min-width: 0px) and (max-width: 479px) {
-    html {
-      font-size: 75%; } }
-  @media only screen and (min-width: 480px) and (max-width: 767px) {
-    html {
-      font-size: 80%; } }
-  @media only screen and (min-width: 768px) and (max-width: 991px) {
-    html {
-      font-size: 87.5%; } }
-  @media only screen and (min-width: 992px) and (max-width: 1199px) {
-    html {
-      font-size: 95%; } }
-  @media only screen and (min-width: 1200px) and (max-width: 4800px) {
-    html {
-      font-size: 100%; } }
 
 h1 {
   font: ultra-expanded 3.000em "AmericanTypewriter";
@@ -67,6 +72,8 @@ figure {
   @media only screen and (min-width: 320px) and (max-width: 767px) {
     figure {
       text-align: center; } }
+  figure > ul > li {
+    display: inline-block; }
 
 ul {
   list-style: none;
@@ -80,8 +87,8 @@ ul {
 
 .rss {
   position: absolute;
-  top: 2.400em;
-  right: 8.500em;
+  top: 0;
+  right: 2.500em;
   color: dimgray; }
   @media only screen and (min-width: 100px) and (max-width: 767px) {
     .rss {
@@ -99,48 +106,28 @@ ul {
   display: inline-block;
   margin-right: 1.700em; }
 
-#back-to-top {
-  position: fixed;
-  bottom: 0.300em;
-  right: 0.300em;
-  width: 1.000em;
-  height: 1.000em;
-  z-index: 9999;
-  vertical-align: middle;
-  border: 0;
-  border-radius: 0.500em;
-  background: #6db5b4;
-  transition: opacity 0.2s ease-out;
-  font-size: 3.000em;
-  text-align: center;
-  color: white;
-  opacity: 0; }
-
-#back-to-top:hover {
-  background: #5d9b9a; }
-
-#back-to-top.show {
-  opacity: 1; }
-
-#header {
-  padding: 1.000em 0;
-  border-top: 10px solid rgba(0, 0, 0, 0.06); }
-  @media only screen and (min-width: 768px) and (max-width: 1199px) {
-    #header {
-      padding: 1.800em 6.500em; } }
-  @media only screen and (min-width: 1200px) and (max-width: 4800px) {
-    #header {
-      padding: 0 6.500em; } }
-
-.nav {
+.header__nav {
   padding: 0.150em 0;
   background-color: #5d9b9a;
   text-align: right; }
   @media only screen and (min-width: 1200px) and (max-width: 4800px) {
-    .nav {
+    .header__nav {
       padding-right: 7.500em; } }
-  .nav .fa-github:before {
-    color: white; }
+  .header__nav::after {
+    content: "";
+    width: 100%;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    border-bottom: 10px solid rgba(0, 0, 0, 0.06); }
+
+@media only screen and (min-width: 0px) and (max-width: 991px) {
+  .header__container {
+    margin: 1.000em 0; } }
+
+@media only screen and (min-width: 768px) and (max-width: 4800px) {
+  .header__container {
+    padding: 0 6.500em; } }
 
 .mainmenu--nav {
   font: 1.000em "Glasgow-Medium";
@@ -149,7 +136,7 @@ ul {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   main {
-    padding: 2.500em 5.000em; } }
+    padding: 2.500em 0; } }
 
 @media only screen and (min-width: 1200px) and (max-width: 4800px) {
   main {
@@ -161,6 +148,15 @@ ul {
   @media only screen and (min-width: 992px) and (max-width: 4800px) {
     .section {
       width: 73%; } }
+
+.article__link {
+  padding: 0 0 0.800em 0.800em;
+  font: 0.800em "Arial";
+  text-transform: uppercase;
+  color: gray; }
+  .article__link--categoryandtags {
+    padding: 0;
+    font-size: 0.700em; }
 
 .articleleftpart {
   width: 15%;
@@ -175,15 +171,6 @@ ul {
     .articleleftpart .fa::after {
       font: 0.750em Arial;
       color: dimgray; }
-    .articleleftpart .fa:first-of-type::after {
-      content: " 12"; }
-    .articleleftpart .fa:nth-of-type(2)::after {
-      content: " 31 people"; }
-    .articleleftpart .fa:last-of-type::after {
-      content: " admin"; }
-    @media only screen and (min-width: 992px) and (max-width: 4800px) {
-      .articleleftpart .fa > br {
-        display: none; } }
     @media only screen and (min-width: 992px) and (max-width: 4800px) {
       .articleleftpart .fa {
         text-align: left; } }
@@ -234,14 +221,6 @@ ul {
   .articlerightpart__post {
     padding-bottom: 1.900em;
     font: 400 0.800em/1.500em "Arial"; }
-  .articlerightpart__link {
-    padding: 0 0 0.800em 0.800em;
-    font: 0.800em "Arial";
-    text-transform: uppercase;
-    color: gray; }
-    .articlerightpart__link--categoryandtags {
-      padding: 0;
-      font-size: 0.700em; }
   .articlerightpart__image {
     display: inline-block;
     margin: 0.800em 0.100em 0.200em 0.900em;
