@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="simpleApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>toDoList Angular</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.0/css/bootstrap-theme.min.css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/components/simpleController/simpleController.js"></script>
+</head>
+
+<body>
+		<div class="container">
+			<div ng-controller="simpleController as sCtrl">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Description</th>
+						<th>Is working</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in sCtrl.table">
+						<td>{{item.id}}</td>
+						<td>{{item.name}}</td>
+						<td>{{item.email}}</td>
+						<td>
+							<input
+							 type="text"
+							 class="form-control"
+							 ng-click="isEdit = true"
+							 ng class="{noEdit: !isEdit}"
+							 ng-model="item.description"
+							 ng-blur="isEdit = false"/>
+						</td>
+						<td>
+							<lebel>	
+							Check input
+								<input type="checkbox" ng-model="item.Isworking"/>
+							</lebel>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+				<pre>{{sCtrl.table | json}}</pre>
+
+	    	</div>
+		</div>    
+</body>
+
+</html>
