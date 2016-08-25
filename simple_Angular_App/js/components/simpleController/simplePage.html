@@ -1,0 +1,47 @@
+<h2>Table example</h2>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Date of start working</th>
+			<th>Description</th>
+			<th>Is working</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in sCtrl.table">
+			<td>{{::item.id}}</td>
+			<td>{{::item.name}}</td>
+			<td>{{::item.email}}</td>
+			<td>{{ sCtrl.getDate(item.date) | date:'dd/MM/yyyy'}}</td>
+			<td>
+				<input
+					 type="text"
+					 class="form-control"
+					 ng-click="isEdit = true"
+					 ng-class="{noEdit: !isEdit}"
+					 ng-model="item.description"
+					 ng-blur="isEdit = false"/>
+			</td>
+			<td>
+				<label>
+					<input type="checkbox" ng-model="item.isWorking"/>
+					Check input
+				</label>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="form-group">
+	<button
+	  type="button"
+	  ng-click="sCtrl.addRow()"
+	  class="btn btn-success pull-right">
+		<span class="glyphicon glyphicon-plus-sign"></span>
+		Add row
+	</button>
+</div>
